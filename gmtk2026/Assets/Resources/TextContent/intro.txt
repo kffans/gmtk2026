@@ -1,0 +1,12 @@
+You barely slept through this night...
+|
+You reminiscence about the exact moment where it all started to fall apart.
+|
+Yes...! That gypsy woman, she must've affected your fate.
+|
+"Why don't you stop and hear your future? Two zlotys, and my eyes will peer into your soul."
+|
+You ignore her, but your wife
+|
+#NextDialogue = "day_1"#
+|~
