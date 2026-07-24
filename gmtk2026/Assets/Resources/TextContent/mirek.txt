@@ -33,7 +33,7 @@ What do you do?
 |
 {
 {“Sure, but you’re not going to screw me over, right?”}
-    //(50% chance that Mirek runs off, but if he doesn’t, you earn between 10 and 30 gelds every day. Each day, there is also a chance that Mirek gets caught, which ends your passive income.)//
+    /*(50% chance that Mirek runs off, but if he doesn’t, you earn between 10 and 30 gelds every day. Each day, there is also a chance that Mirek gets caught, which ends your passive income.)*/
     #Money -= offer#
     &RANDOM > 50&
         #MirekPassiveIncome#
@@ -41,7 +41,7 @@ What do you do?
     "Friend, you remember the nutsack twisting back in military? True friendships are forged on that. I'd never ever ever never run off with the money like that."
     |
 {“Hoooow much? Angle grinders come *way* cheaper.”} 
-    //(Negotiate: 80% chance that you pay more, namely 120 gelds , and 10% chance that you pay 50 gelds.)//
+    /*(Negotiate: 80% chance that you pay more, namely 120 gelds , and 10% chance that you pay 50 gelds.)*/
     &RANDOM < 80&
         #offer = 120#
         "Cheap bastard... I'm also including the work I'm gonna do and the fact I'm even willing to share it with you."
@@ -65,7 +65,7 @@ What do you do?
             |
             "Later." Mirek walks away
         ||
-        {Yeah... no deal.}
+        {"Yeah... no deal."}
             "You were always a cheap f***, didn't know what to expect. Later."
     }
 {“F*** off, you old bastard.” (Sic Burek on him.)}
