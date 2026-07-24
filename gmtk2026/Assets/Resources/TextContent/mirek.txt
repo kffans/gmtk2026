@@ -1,0 +1,82 @@
+I had a beautiful dream.
+|
+I dreamed that the neighbor next door had smashed his own face, but that dream was interrupted by Pjoter.
+|
+“Hey, geezer, there's a guy, says he’s a friend from the army.”
+|
+“Not possible. All my friends died during the intervention in Marovia in '74, when we fell into an ambush by Marovian partisants. Go sic Burek on him.”
+|
+Truth be told, we never even got there, because right after crossing the border, drunk Mirek crashed the combat vehicle into a barn. But why should I explain myself to this brat?
+|
+“Yeah… whoever he is, I already told him you’d come downstairs.”
+|
+I got up and went down the stairs wearing only my underwear. Before my eyes stood Mirek, ugly as ever.
+|
+Although I had never seen him in a blazer before, and on top of that, he smelled far less of vodka than he had back when we knew each other.
+|
+“Long time no see, old man. Don’t you recognize your good friend?”
+|
+We shook hands. I was surprised that after all these years, he still had a vise grip.
+|
+“Yeah, a long time indeed, hehe. Time flies mercilessly, especially in the prison where I ended up, thanks to you.”
+|
+“You’re still angry?! That was ages ago, *and* it wasn’t true. But you know what, Janus? Today, I’m going to *repay* you.”
+|
+“I’d gladly take a little cash. What am I saying, *a little* — I’ll take a lot too.”
+|
+“Yes yes. I’ve got a business proposition for you, and since you’re my friend, I’ll let you be the first investor. You’re probably wondering what kind of business it is.” He rubs his hands.
+|
+"A very simple and transparent one: I cut out catalytic converters, and my angle grinder broke down recently. Lend me a hundred gelds, and you won’t regret it. Just a hundred."
+|
+#offer = 100#
+What do you do?
+|
+{
+{“Sure, but you’re not going to screw me over, right?”}
+    //(50% chance that Mirek runs off, but if he doesn’t, you earn between 10 and 30 gelds every day. Each day, there is also a chance that Mirek gets caught, which ends your passive income.)//
+    #Money -= offer#
+    &RANDOM > 50&
+        #MirekPassiveIncome#
+    ||
+    "Friend, you remember the nutsack twisting back in military? True friendships are forged on that. I'd never ever ever never run off with the money like that."
+    |
+{“Hoooow much? Angle grinders come *way* cheaper.”} 
+    //(Negotiate: 80% chance that you pay more, namely 120 gelds , and 10% chance that you pay 50 gelds.)//
+    &RANDOM < 80&
+        #offer = 120#
+        "Cheap bastard... I'm also including the work I'm gonna do and the fact I'm even willing to share it with you."
+        |
+        "Now that I think about it, it *is* a really good deal - I'm raising it to 120 geld."
+    ||
+    &ELSE&
+        #offer = 50#
+        "Now you're making me kinda guilty... Alright, fine. 50 geld."
+    ||
+    |
+    {
+        &Money >= offer&
+        {"Deal."}
+            #Money -= offer##MirekPassiveIncome#
+            "A person I can count on, *that's* valuable!"
+        ||
+        &Money < offer&
+        {"I don't have that much."}
+            "Then spend less on cigs you greedy pig."
+            |
+            "Later." Mirek walks away
+        ||
+        {Yeah... no deal.}
+            "You were always a cheap f***, didn't know what to expect. Later."
+    }
+{“F*** off, you old bastard.” (Sic Burek on him.)}
+    "Make me. I really need this, friend."
+    |
+    "I'm counting to three."
+    |
+    "One. Pjoter let the dog out!"
+    |
+    "Twoooo- yeah, come on, git!"
+    |
+    "The bastard's gone. You love to see it, hehe."
+}
+|~

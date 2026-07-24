@@ -1,12 +1,52 @@
 You barely slept through this night...
 |
-You reminiscence about the exact moment where it all started to fall apart.
+You reminiscence about the exact moment where it all started to fall apart.@IMG zul@@IMG zul@@IMG zul@
 |
-Yes...! That gypsy woman, she must've affected your fate.
+Yes...! That gypsy woman, she must've affected your fate somehow.@IMG blank@
 |
-"Why don't you stop and hear your future? Two zlotys, and my eyes will peer into your soul."
+You're in a town square with your wife, a quick stroll to get groceries.@IMG zul@
 |
-You ignore her, but your wife
+An elder gypsy woman shouts "You! Two gelds, and I will peer into your very soul, your future!!"@IMG blank@
 |
-#NextDialogue = "day_1"#
+You ignore her, but your wife does not. Helena is curious how your future will turn out. You are both only 22 years old.@IMG zul@
+|
+You couldn't even react, coin's spent. "Thank you dear lady, let me ready my cards for this *gentleman* here..."
+|
+The gypsy fortune teller unfolds upon the table three tarot cards, and does some things with her hands.
+|
+She flips the cards.
+|
+One by one.
+|
+Now, everything's clear.
+|
+"Your retirement will not be too fruitious-"
+|
+"WHAT? I won't get to LIVE TO MY RETIREMENT?!" You get emotional, all of a sudden.
+|
+"No- listen to me-" The fortune teller tries to elaborate.
+|
+"Oh I will live to my retirement, I will retire PEACEFULLY, these cards ain't shi-" You feel your wife's hands tugging on your arm.
+|
+"Give me back my 2 gelds! I could buy a halva instead of this!!"
+|
+"Get lost." Says the gypsy woman.
+|
+You haven't noticed Helena's tears yet, as you were trying to steal back your hard-earned money from the gypsy.
+|
+Okay, that's enough.
+|
+Back to being 64 years old. Your retirement is in seven days.
+|
+You keep thinking "I just gotta survive... I mean, I made it somehow till now."
+|
+"Seven days, just a week. In my age, time flies by. Easy."
+|
+It's sunday, but you keep up your usual routine even today, as if you're going to work.
+|
+You worked your whole life at a local pollution factory, PollutExPol. It will all change soon.
+|
+Just gotta survive, Janus.
+|
+#NextDialogue = "mirek"#
 |~

@@ -95,6 +95,9 @@ public class Dial {
         public System.Random random;
         public Dictionary<string, Pair> globalVarsCopy;
         public List<string> saveData;
+        
+        public bool shouldChangeFrame;
+        public List<string> frames;
     }
 
 
@@ -1207,6 +1210,13 @@ public class Dial {
                 }
                 wasCommandFound = true;
             }
+            else if (textSegment == "IMG".Substring(0, textLength)) {
+                if (segments_s < 2) { hasEnoughArguments = false; break; }
+                string imgName = segments[1];
+                state.frames.Add(imgName);
+                state.shouldChangeFrame = true;
+                wasCommandFound = true;
+            }
             textLength--;
         }
         if (!wasCommandFound)    { Error("Unspecified command inside the special instruction.", state.text, state.currentPos.text_i); }
@@ -1691,6 +1701,9 @@ public class Dial {
             //state.text = File.ReadAllText(path);
             state.text = textAsset.text;
             state.text_s = state.text.Length + 1;
+
+            state.shouldChangeFrame = false;
+            state.frames            = new List<string>();
             
             if (state.text_s < 2) {
                 Error("File with the following name doesn't have at least 2 characters: " + fullFile_n);

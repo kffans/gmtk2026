@@ -29,9 +29,12 @@ public class Gameplay : MonoBehaviour
     
     private Dial.State state = null;
     
+    public Transform framesObj;
+    public GameObject frameObj;
+    
     private bool dialogueFinish = false;
     
-    public enum GameState { NONE, INTRO, MAIN_MENU, DIALOGUE }
+    public enum GameState { NONE, INTRO, MAIN_MENU, DIALOGUE, BREAK, CREDITS }
     private GameState gameState = GameState.INTRO;
     
     private bool haveTextsChanged = true;
@@ -40,14 +43,16 @@ public class Gameplay : MonoBehaviour
     private bool triggerOnce = true;
     
     public AudioSource audioSource;
-    public AudioClip introClip;
+    //public AudioClip introClip;
     
-    public TextMeshProUGUI currentActionText;
     public GameObject dialogueText;
     public Transform dialogueTexts;
     
+    private float breakTime = 0.0f;
+    private float breakTimeTotal = 4.0f;
     
     public GameObject dialogueObj;
+    public GameObject breakObj;
     
     private List<GameObject> texts = null;
     
@@ -66,20 +71,19 @@ public class Gameplay : MonoBehaviour
         switch (gameState) {
             case GameState.INTRO: {
                 triggerOnce = true;
+                Dial.DIAL_DEFAULT_TEXT_WIDTH = 40;
                 gameState = GameState.DIALOGUE;
                 Dial.SetString("NextDialogue", "intro");   
+                state = Dial.State_I(Dial.GetString("NextDialogue"));
                 break;
             }
             case GameState.DIALOGUE: {
                 if (triggerOnce) {
                     triggerOnce = false;
-                    Dial.DIAL_DEFAULT_TEXT_WIDTH = 40;
-                    texts = new List<GameObject>();
                     
-                    state = Dial.State_I(Dial.GetString("NextDialogue"));
-                    
-                    dialogueObj.SetActive(true);
                 }
+                
+                
                 
                 /* keyboard events */
                 if (Dial.IsCurrentStatus(state, Dial.Status.WAIT_FOR_CONTINUATION)) {
@@ -107,15 +111,16 @@ public class Gameplay : MonoBehaviour
                     }
                     if (dialogueFinish) {
                         dialogueFinish = false;
-                        dialogueObj.SetActive(false);
-                        /*if (Dial.GetString("NextDialogue") == "finale") {
-                            gameState = GameState.FINALE;
+                        //dialogueObj.SetActive(false);
+                        if (Dial.GetString("NextDialogue") == "credits") {
+                            gameState = GameState.CREDITS;
                         }
                         else {
-                            gameState = GameState.ROOM_SELECTION;
-                        }*/
+                            gameState = GameState.BREAK;
+                        }
                         // @TODO reset texts?
                         haveTextsChanged = true;
+                        triggerOnce = true;
                         break;
                     }
                 }
@@ -123,6 +128,28 @@ public class Gameplay : MonoBehaviour
                 
                 
                 if (state != null) { // @CS
+                    if (state.shouldChangeFrame == true) {
+                        state.shouldChangeFrame = false;
+                        Texture frameTexture = Resources.Load("ImgContent/" + state.frames[0]) as Texture;
+                        GameObject frame = Instantiate(frameObj, framesObj);
+                        frame.GetComponent<RawImage>().texture = frameTexture;
+                        LeanTween.moveY(frame, frame.transform.position.y - 528f, 0.35f)
+                            .setEase(LeanTweenType.easeOutBack)
+                            .setOnComplete(() =>
+                            {
+                                if (state.frames.Count != 0) {
+                                    state.frames.RemoveAt(0);
+                                }
+                                if (state.frames.Count != 0) {
+                                    state.shouldChangeFrame = true;
+                                }
+                            });
+                    }
+                    
+                    if (framesObj.childCount > 10) {
+                        Destroy(framesObj.GetChild(0).gameObject);
+                    }
+                    
                     List<GameObject> texts = new List<GameObject>();
                     
                     float scroll = Input.GetAxis("Mouse ScrollWheel");
@@ -146,7 +173,6 @@ public class Gameplay : MonoBehaviour
                             TextMeshProUGUI tempText = temp.GetComponent<TextMeshProUGUI>();
                             tempText.text = Dial.GetText(state, i);
                             tempText.ForceMeshUpdate();
-                            //Canvas.ForceUpdateCanvases();
                             state.textObjs[i].height = -tempText.bounds.size.y - fontSize + 0;
                             totalHeight += state.textObjs[i].height;
                             Destroy(temp);
@@ -176,6 +202,27 @@ public class Gameplay : MonoBehaviour
                     texts.Clear();
 
                 }
+                break;
+            }
+            case GameState.BREAK: {
+                if (triggerOnce) {
+                    triggerOnce = false;
+                    texts = new List<GameObject>();
+                    
+                    //Dial.SetString("NextDialogue", "");
+                    state = Dial.State_I(Dial.GetString("NextDialogue"));
+                    
+                    breakObj.SetActive(true);
+                }
+                breakTime += Time.deltaTime;
+                
+                if (breakTime >= breakTimeTotal) {
+                    breakTime = 0;
+                    gameState = GameState.DIALOGUE;
+                    breakObj.SetActive(false);
+                    triggerOnce = true;
+                }
+
                 break;
             }
             default: break;
