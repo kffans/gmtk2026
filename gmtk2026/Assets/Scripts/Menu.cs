@@ -5,7 +5,7 @@ public class Menu : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("tekst");
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Gameplay");
     }
 
     public void Options()

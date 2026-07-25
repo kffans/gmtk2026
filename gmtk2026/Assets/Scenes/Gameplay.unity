@@ -1505,11 +1505,12 @@ MonoBehaviour:
   framesObj: {fileID: 432781268}
   frameObj: {fileID: 3857090754233469669, guid: 6b3dec7edc2e5524eb0127f67a13e73b, type: 3}
   gameState: 1
-  audioSource: {fileID: 1185688004}
   dialogueText: {fileID: 4644187406862268951, guid: 46360de344153514499ee84e323ccf88, type: 3}
   dialogueTexts: {fileID: 224819528}
   dialogueObj: {fileID: 1009809159}
   breakObj: {fileID: 1248095410}
+  availableDays:
+  - mirek
   currentHealth: 2
   currentStress: 2
   currentRelations: 2
@@ -1536,6 +1537,11 @@ MonoBehaviour:
     prefab: {fileID: 1012876847169240611, guid: 24299e20dfa12f14588a72ff50afd00a, type: 3}
   - value: 100
     prefab: {fileID: 7857483167661547013, guid: dd7587b60aeca9c408c83cd02fde58ad, type: 3}
+  audioSource: {fileID: 1185688004}
+  dialogueClickSound: {fileID: 8300000, guid: c168930b54f98fc4e844917af4625701, type: 3}
+  statChangeSound: {fileID: 8300000, guid: f98b6c6fd2d4d68409bffdca56342771, type: 3}
+  moneyChangeSound: {fileID: 8300000, guid: 362c61d0fa5637140b6ae381f2eca211, type: 3}
+  breakSound: {fileID: 8300000, guid: 1dcf91deec19a41448672efcc95ebfe6, type: 3}
 --- !u!1 &1177305553
 GameObject:
   m_ObjectHideFlags: 0

@@ -57,6 +57,8 @@ public class Gameplay : MonoBehaviour
     
     private List<GameObject> texts = null;
 
+    public List<string> availableDays;
+
     
 
 
@@ -98,7 +100,8 @@ public class Gameplay : MonoBehaviour
     [Header("Dźwięki")]
     public AudioClip dialogueClickSound; 
     public AudioClip statChangeSound;    
-    public AudioClip moneyChangeSound;  
+    public AudioClip moneyChangeSound;
+    public AudioClip breakSound;  
 
 
     private void PlaySound(AudioClip clip)
@@ -310,24 +313,34 @@ public class Gameplay : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) {
                         dialogueFinish = true;
                     }
-                    if (dialogueFinish) {
+                    if (dialogueFinish) 
+                    {
                         dialogueFinish = false;
-                        //dialogueObj.SetActive(false);
-                        if (Dial.GetString("NextDialogue") == "credits") {
+                        
+                        if (Dial.GetString("NextDialogue") == "credits") 
+                        {
                             gameState = GameState.CREDITS;
                         }
-                        else {
+                        else if (availableDays != null && availableDays.Count > 0) 
+                        {
+                            int randomIndex = Random.Range(0, availableDays.Count);
+                            string chosenDay = availableDays[randomIndex];
+                            
+                            availableDays.RemoveAt(randomIndex); 
+                            
+                            Dial.SetString("NextDialogue", chosenDay);
                             gameState = GameState.BREAK;
                         }
-                        // @TODO reset texts?
+                        else {
+                            Dial.SetString("NextDialogue", "credits");
+                            gameState = GameState.CREDITS;
+                        }
+                        
                         haveTextsChanged = true;
                         triggerOnce = true;
                         break;
                     }
                 }
-                
-                
-                
                 if (state != null) { // @CS
                     if (state.shouldChangeFrame == true) {
                         state.shouldChangeFrame = false;
@@ -406,6 +419,7 @@ public class Gameplay : MonoBehaviour
                 break;
             }
             case GameState.BREAK: {
+               
                 if (triggerOnce) {
                     triggerOnce = false;
                     texts = new List<GameObject>();
@@ -414,6 +428,7 @@ public class Gameplay : MonoBehaviour
                     state = Dial.State_I(Dial.GetString("NextDialogue"));
                     
                     breakObj.SetActive(true);
+                    PlaySound(breakSound);
                 }
                 breakTime += Time.deltaTime;
                 

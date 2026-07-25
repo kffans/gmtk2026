@@ -1503,11 +1503,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   framesObj: {fileID: 432781268}
   frameObj: {fileID: 3857090754233469669, guid: 6b3dec7edc2e5524eb0127f67a13e73b, type: 3}
+  gameState: 1
   audioSource: {fileID: 1185688004}
   dialogueText: {fileID: 4644187406862268951, guid: 46360de344153514499ee84e323ccf88, type: 3}
   dialogueTexts: {fileID: 224819528}
   dialogueObj: {fileID: 1009809159}
   breakObj: {fileID: 1248095410}
+  currentHealth: 3
+  currentStress: 3
+  currentRelations: 3
+  money: 100
 --- !u!1 &1177305553
 GameObject:
   m_ObjectHideFlags: 0
