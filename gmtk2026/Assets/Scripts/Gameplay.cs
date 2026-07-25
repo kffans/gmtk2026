@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq; 
+
+
 
 public class Gameplay : MonoBehaviour
 {
@@ -35,15 +38,13 @@ public class Gameplay : MonoBehaviour
     private bool dialogueFinish = false;
     
     public enum GameState { NONE, INTRO, MAIN_MENU, DIALOGUE, BREAK, CREDITS }
-    private GameState gameState = GameState.INTRO;
+    public GameState gameState = GameState.INTRO;
     
     private bool haveTextsChanged = true;
     private float scrollValue = 0;
     
     private bool triggerOnce = true;
     
-    public AudioSource audioSource;
-    //public AudioClip introClip;
     
     public GameObject dialogueText;
     public Transform dialogueTexts;
@@ -55,10 +56,201 @@ public class Gameplay : MonoBehaviour
     public GameObject breakObj;
     
     private List<GameObject> texts = null;
-    
-   
-    void Start () {
 
+    
+
+
+    /// <summary>
+    /// Variables for handling the mana system
+    /// </summary>
+    public enum HealthLevel { ItsOver = 0, ItsBad = 1, CouldBeBetter = 2, Nice = 3 }
+    public enum StressLevel { CannotNoMore = 0, MustBeTough = 1, Struggle = 2, Breeze = 3 }
+    public enum RelationsLevel { FamilyNoMore = 0, CloseToEnd = 1, Tolerate = 2, Loving = 3 }
+
+    public HealthLevel currentHealth = HealthLevel.Nice;
+    public StressLevel currentStress = StressLevel.Breeze;
+    public RelationsLevel currentRelations = RelationsLevel.Loving;
+    public int money = 100;
+
+
+    /// <summary>
+    /// For displaying current states of variables
+    /// </summary>
+    public TextMeshProUGUI stressTextUI; 
+    public TextMeshProUGUI relationsTextUI;
+    public TextMeshProUGUI healthTextUI;
+
+    [SerializeField] private Transform _moneySpawnContainer;
+    [SerializeField] private Vector2 _spacing = new Vector2(1.5f, 0f);
+
+    [SerializeField] private CurrencyDenomination[] _denominations;
+    private List<GameObject> _spawnedMoney = new List<GameObject>();
+
+    [System.Serializable]
+    public struct CurrencyDenomination
+    {
+        public int value;
+        public GameObject prefab;
+    }
+
+    public AudioSource audioSource;
+    
+    [Header("Dźwięki")]
+    public AudioClip dialogueClickSound; 
+    public AudioClip statChangeSound;    
+    public AudioClip moneyChangeSound;  
+
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
+
+    private string GetHealthDescription(HealthLevel health)
+    {
+        switch (health)
+        {
+            case HealthLevel.ItsOver: return "It's over";
+            case HealthLevel.ItsBad: return "It's bad";
+            case HealthLevel.CouldBeBetter: return "Could be better";
+            case HealthLevel.Nice: return "Nice";
+            default: return "Unknown";
+        }
+    }
+
+    private string GetStressDescription(StressLevel stress)
+    {
+        switch (stress)
+        {
+            case StressLevel.CannotNoMore: return "I cannot no more";
+            case StressLevel.MustBeTough: return "I must be tough";
+            case StressLevel.Struggle: return "Sometimes I struggle";
+            case StressLevel.Breeze: return "It's a breeze";
+            default: return "Unknown";
+        }
+    }
+
+    private string GetRelationsDescription(RelationsLevel relations)
+    {
+        switch (relations)
+        {
+            case RelationsLevel.FamilyNoMore: return "Family no more";
+            case RelationsLevel.CloseToEnd: return "Close to end";
+            case RelationsLevel.Tolerate: return "They tolerate me";
+            case RelationsLevel.Loving: return "They loving me";
+            default: return "Unknown";
+        }
+    }
+
+    private void UpdateUI()
+    {
+        if (healthTextUI != null)
+        {
+            healthTextUI.text = "Health: " + GetHealthDescription(currentHealth);
+        }
+
+        if (stressTextUI != null)
+        {
+            stressTextUI.text = "Stress: " + GetStressDescription(currentStress);
+        }
+
+        if (relationsTextUI != null)
+        {
+            relationsTextUI.text = "Relations: " + GetRelationsDescription(currentRelations);
+        }
+        
+        GenerateMoney(money);
+    }
+
+    private void GenerateMoney(int targetAmount)
+    {
+        ClearPreviousMoney();
+
+
+        int currentAmount = targetAmount;
+        int spawnIndex = 0; 
+
+        foreach (var denomination in _denominations)
+        {
+            if (denomination.value <= 0) continue;
+
+            while (currentAmount >= denomination.value)
+            {
+                currentAmount -= denomination.value;
+                SpawnGeldPrefab(denomination.prefab, spawnIndex);
+                spawnIndex++;
+            }
+        }
+    }
+
+    private void SpawnGeldPrefab(GameObject prefab, int index)
+    {
+        if (prefab == null) return;
+
+        GameObject newMoney = Instantiate(prefab, _moneySpawnContainer, false);
+        
+        RectTransform rectTransform = newMoney.GetComponent<RectTransform>();
+        if (rectTransform != null) {
+            rectTransform.anchoredPosition = new Vector2(index * _spacing.x, index * _spacing.y);
+        } else {
+            newMoney.transform.localPosition = new Vector3(index * _spacing.x, index * _spacing.y, 0);
+        }
+
+        _spawnedMoney.Add(newMoney);
+    }
+
+    private void ClearPreviousMoney()
+    {
+        foreach (var moneyGo in _spawnedMoney)
+        {
+            if (moneyGo != null)
+            {
+                Destroy(moneyGo);
+            }
+        }
+        _spawnedMoney.Clear();
+    }
+
+
+    private void PushVariablesToDial()
+    {
+        Dial.SetInt("Health", (int)currentHealth);
+        Dial.SetInt("Stress", (int)currentStress);
+        Dial.SetInt("Relations", (int)currentRelations);
+        Dial.SetInt("Money", money);
+    }
+
+    private void PullVariablesFromDial()
+    {
+        HealthLevel newHealth = (HealthLevel)Dial.GetInt("Health");
+        StressLevel newStress = (StressLevel)Dial.GetInt("Stress");
+        RelationsLevel newRelations = (RelationsLevel)Dial.GetInt("Relations");
+        int newMoney = Dial.GetInt("Money");
+
+        bool statsChanged = (newHealth != currentHealth || newStress != currentStress || newRelations != currentRelations);
+        bool moneyChanged = (newMoney != money);
+
+        currentHealth = newHealth;
+        currentStress = newStress;
+        currentRelations = newRelations;
+        money = newMoney;
+
+        if (statsChanged) PlaySound(statChangeSound);
+        if (moneyChanged) PlaySound(moneyChangeSound);
+
+        UpdateUI();
+    }
+    
+    void Start () {
+        if (_denominations != null && _denominations.Length > 0)
+        {
+            _denominations = _denominations.OrderByDescending(d => d.value).ToArray();
+        }
+
+        UpdateUI();
     }
 
     void Update () {
@@ -70,6 +262,7 @@ public class Gameplay : MonoBehaviour
         
         switch (gameState) {
             case GameState.INTRO: {
+                PushVariablesToDial();
                 triggerOnce = true;
                 Dial.DIAL_DEFAULT_TEXT_WIDTH = 40;
                 gameState = GameState.DIALOGUE;
@@ -89,7 +282,11 @@ public class Gameplay : MonoBehaviour
                 if (Dial.IsCurrentStatus(state, Dial.Status.WAIT_FOR_CONTINUATION)) {
                     if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) {
                         Dial.Continuation(state);
+
+                        PlaySound(dialogueClickSound);
+
                         haveTextsChanged = true;
+                        PullVariablesFromDial();
                     }
                 }
                 if (Dial.IsCurrentStatus(state, Dial.Status.WAIT_FOR_CHOICE)) {
@@ -99,7 +296,11 @@ public class Gameplay : MonoBehaviour
                         if (Input.GetKeyUp(keypadCodes[i + 1])) {
                             bool isValid = Dial.IsChoiceValid(state, i);
                             if (!isValid) { continue; }
+                            
+                            PlaySound(dialogueClickSound);
+
                             Dial.Choice(state, i);
+                            PullVariablesFromDial();
                             haveTextsChanged = true;
                             break;
                         }
