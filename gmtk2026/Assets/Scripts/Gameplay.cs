@@ -97,11 +97,15 @@ public class Gameplay : MonoBehaviour
 
     public AudioSource audioSource;
     
-    [Header("Dźwięki")]
+    [Header("Sound effects")]
     public AudioClip dialogueClickSound; 
     public AudioClip statChangeSound;    
     public AudioClip moneyChangeSound;
-    public AudioClip breakSound;  
+    public AudioClip breakSound;
+
+    [Header("Music")]
+    public AudioSource bgmSource;
+    public AudioClip backgroundMusic;  
 
 
     private void PlaySound(AudioClip clip)

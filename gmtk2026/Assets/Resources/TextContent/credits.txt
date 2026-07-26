@@ -1,0 +1,52 @@
+Finally, I did it! I survived the grueling shifts, the backaches, and the constant threat of liver failure.
+|
+I am alive! Finally, I will live like a king. No more alarm clocks, no more listening to the boss's whining. Just pure, unadulterated luxury.
+|
+The very next day, I marched into my bank to receive my first retirement payout. I could already taste the premium vodka I was going to buy.
+|
+I approached the manager's desk with my head held high. She looked at me with those cold, dead eyes of a corporate drone and slid a pitifully thin envelope across the desk.
+|
+I opened it and started counting the cash right there.
+|
+One, two... wait, that's it? I licked my thumb and counted it again. And again. 
+|
+The total amount wasn't even close to the national minimum wage.
+|
+What do you do?
+|
+{
+    {"“There must be a mistake! Where is the rest of my money?!”"}
+        "I slammed my fist on the counter, making her cheap plastic pen holder jump."
+        |
+        "“Sir, please lower your voice,” she said, her expression completely unchanged."
+        |
+        "“I will not! I worked my whole life! Did the government steal the rest, or did you?!”"
+        |
+        "“Sir, we haven't taken anything. According to our system, this is your calculated monthly pension. We do not control the state system. Have a nice day.”"
+    ||
+    {"“Is... is this a joke? Where are the hidden cameras?”"}
+        "I looked around, half-expecting some TV presenter to jump out from behind a fake potted plant."
+        |
+        "“I assure you, sir, this bank does not participate in prank shows,” the manager sighed, clearly bored."
+        |
+        "“But this is pennies! How am I supposed to live like a king on this?!”"
+        |
+        "“Perhaps a very poor king, sir. This is your exact pension amount. Now, please make way for the next customer.”"
+    ||
+    {"(Sigh and take the money quietly)"}
+        "I didn't even have the energy to argue. I just stared at the pathetic couple of banknotes."
+        |
+        "The manager tapped her perfectly manicured nails on the desk. “Is there anything else I can help you with, sir? If not, please step aside.”"
+        |
+        "“No... no, you've helped enough,” I muttered."
+}
+|
+I shoved the pathetic wad of cash into my pocket and walked back home, my dreams of luxury shattering with every step.
+|
+All of this wasn't worth it. The system chewed me up and spat me out. I'm going to have to go back to work... maybe ask Mirek about that catalytic converter business.
+|
+Well... at least I'm alive. For now.
+|
+#Money += 30#
+#Stress += 1#
+|~
