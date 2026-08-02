@@ -6,16 +6,16 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio Sources")]
     public AudioSource sfxSource; 
-    public AudioSource bgmSource;
+    public AudioSource musicSource;
     
     [Header("Sound Effects")]
-    public AudioClip dialogueClickSound; 
-    public AudioClip statChangeSound;    
-    public AudioClip moneyChangeSound;
+    public AudioClip dialogueClick; 
+    public AudioClip statChange;    
+    public AudioClip moneyChange;
     public AudioClip breakSound;
 
-    [Header("Background Music")]
-    public AudioClip backgroundMusic;  
+    [Header("Music")]
+    public AudioClip menuMusic;  
 
     private void Awake()
     {
@@ -30,51 +30,61 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void PlaySFX(string soundEffectName)
     {
-        // if (bgmSource != null && backgroundMusic != null)
-        // {
-        //     bgmSource.clip = backgroundMusic;
-        //     bgmSource.loop = true;
-        //     bgmSource.Play();
-        // }
-    }
+        AudioClip clipToPlay = null;
 
-    public void PlayDialogueClick()
-    {
-        PlaySFX(dialogueClickSound);
-    }
-
-    public void PlayStatChange()
-    {
-        PlaySFX(statChangeSound);
-    }
-
-    public void PlayMoneyChange()
-    {
-        PlaySFX(moneyChangeSound);
-    }
-
-    public void PlayBreakSound()
-    {
-        PlaySFX(breakSound);
-    }
-
-    private void PlaySFX(AudioClip clip)
-    {
-        if (sfxSource != null && clip != null)
+        switch (soundEffectName)
         {
-            sfxSource.PlayOneShot(clip);
+            case "dialogueClick":
+                clipToPlay = dialogueClick;
+                break;
+            case "statChange":
+                clipToPlay = statChange;
+                break;
+            case "moneyChange":
+                clipToPlay = moneyChange;
+                break;
+            case "break":
+                clipToPlay = breakSound;
+                break;
+            default:
+                Debug.LogWarning("Nie znaleziono efektu dźwiękowego o nazwie: " + soundEffectName);
+                return; 
         }
+
+        if (sfxSource != null && clipToPlay != null)
+        {
+            sfxSource.PlayOneShot(clipToPlay);
+        }
+
+        
     }
 
-    public void PlayMusic(AudioClip clip)
+    public void PlayMusic(string musicName)
     {
-        if (bgmSource != null && clip != null)
+        AudioClip clipToPlay = null;
+
+        switch (musicName)
         {
-            bgmSource.clip = clip;
-            bgmSource.loop = true;
-            bgmSource.Play();
+            case "menuMusic":
+                clipToPlay = menuMusic; 
+                break;
+            default:
+                Debug.LogWarning("There is no such: " + musicName);
+                return; 
+        }
+
+        if (musicSource != null && clipToPlay != null)
+        {
+            if (musicSource.clip == clipToPlay && musicSource.isPlaying) 
+            {
+                return;
+            }
+
+            musicSource.clip = clipToPlay;
+            musicSource.loop = true;
+            musicSource.Play(); 
         }
     }
 }

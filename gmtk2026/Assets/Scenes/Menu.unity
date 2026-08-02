@@ -1399,12 +1399,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSource: {fileID: 203030391}
-  bgmSource: {fileID: 477729756}
-  dialogueClickSound: {fileID: 8300000, guid: c168930b54f98fc4e844917af4625701, type: 3}
-  statChangeSound: {fileID: 8300000, guid: 1dcf91deec19a41448672efcc95ebfe6, type: 3}
-  moneyChangeSound: {fileID: 8300000, guid: 362c61d0fa5637140b6ae381f2eca211, type: 3}
+  musicSource: {fileID: 477729756}
+  dialogueClick: {fileID: 8300000, guid: c168930b54f98fc4e844917af4625701, type: 3}
+  statChange: {fileID: 8300000, guid: 6512d3ec7dce35c40af32b8f2a2f43c4, type: 3}
+  moneyChange: {fileID: 8300000, guid: 362c61d0fa5637140b6ae381f2eca211, type: 3}
   breakSound: {fileID: 8300000, guid: 1dcf91deec19a41448672efcc95ebfe6, type: 3}
-  backgroundMusic: {fileID: 8300000, guid: a8dc0a5fe065f8445bc02a94441c1aae, type: 3}
+  menuMusic: {fileID: 8300000, guid: a8dc0a5fe065f8445bc02a94441c1aae, type: 3}
 --- !u!1 &1857009644
 GameObject:
   m_ObjectHideFlags: 0

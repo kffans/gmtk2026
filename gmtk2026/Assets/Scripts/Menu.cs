@@ -2,13 +2,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement; 
 public class Menu : MonoBehaviour
 {
-    public AudioClip menuMusic;
-
     void Start()
     {
-        if (AudioManager.Instance != null && menuMusic != null)
+        if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.PlayMusic(menuMusic);
+            AudioManager.Instance.PlayMusic("menuMusic");
         }
         else
         {
@@ -18,7 +16,6 @@ public class Menu : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log("tekst");
         SceneManager.LoadScene("Gameplay");
     }
 

@@ -190,9 +190,9 @@ public class Gameplay : MonoBehaviour
         currentRelations = newRelations;
         money = newMoney;
 
-        // Using audioManager to play sound effects when stats or money change
-        if (statsChanged) AudioManager.Instance.PlayStatChange();
-        if (moneyChanged) AudioManager.Instance.PlayMoneyChange();
+        
+        if (statsChanged) AudioManager.Instance.PlaySFX("statChange");
+        if (moneyChanged) AudioManager.Instance.PlaySFX("moneyChange");
 
         UpdateUI();
     }
@@ -233,7 +233,7 @@ public class Gameplay : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) {
                         Dial.Continuation(state);
 
-                        AudioManager.Instance.PlayDialogueClick();
+                        AudioManager.Instance.PlaySFX("dialogueClick");
 
                         haveTextsChanged = true;
                         PullVariablesFromDial();
@@ -246,7 +246,7 @@ public class Gameplay : MonoBehaviour
                             bool isValid = Dial.IsChoiceValid(state, i);
                             if (!isValid) { continue; }
                             
-                            AudioManager.Instance.PlayDialogueClick();
+                            AudioManager.Instance.PlaySFX("dialogueClick");
 
                             Dial.Choice(state, i);
                             PullVariablesFromDial();
@@ -372,7 +372,7 @@ public class Gameplay : MonoBehaviour
                     
                     breakObj.SetActive(true);
 
-                    AudioManager.Instance.PlayBreakSound();
+                    AudioManager.Instance.PlaySFX("interlude");
                 }
                 breakTime += Time.deltaTime;
                 
