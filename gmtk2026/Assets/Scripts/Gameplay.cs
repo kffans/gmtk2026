@@ -5,28 +5,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq; 
 
-
-
 public class Gameplay : MonoBehaviour
 {
-    
     private KeyCode[] keypadCodes = new KeyCode[] {
-        KeyCode.Alpha0,
-        KeyCode.Alpha1,
-        KeyCode.Alpha2,
-        KeyCode.Alpha3,
-        KeyCode.Alpha4,
-        KeyCode.Alpha5,
-        KeyCode.Alpha6,
-        KeyCode.Alpha7,
-        KeyCode.Alpha8,
-        KeyCode.Alpha9
+        KeyCode.Alpha0, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4,
+        KeyCode.Alpha5, KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9
     };
     
-    private float  TOTAL_TIME      = 0;
-
+    private float TOTAL_TIME = 0;
     private int fontSize = 36;
-    
     private int xPosTextModule = -850;
     private int yPosTextModule = -70;
     
@@ -42,9 +29,7 @@ public class Gameplay : MonoBehaviour
     
     private bool haveTextsChanged = true;
     private float scrollValue = 0;
-    
     private bool triggerOnce = true;
-    
     
     public GameObject dialogueText;
     public Transform dialogueTexts;
@@ -56,11 +41,7 @@ public class Gameplay : MonoBehaviour
     public GameObject breakObj;
     
     private List<GameObject> texts = null;
-
     public List<string> availableDays;
-
-    
-
 
     /// <summary>
     /// Variables for handling the mana system
@@ -74,7 +55,6 @@ public class Gameplay : MonoBehaviour
     public RelationsLevel currentRelations = RelationsLevel.Loving;
     public int money = 100;
 
-
     /// <summary>
     /// For displaying current states of variables
     /// </summary>
@@ -84,7 +64,6 @@ public class Gameplay : MonoBehaviour
 
     [SerializeField] private Transform _moneySpawnContainer;
     [SerializeField] private Vector2 _spacing = new Vector2(1.5f, 0f);
-
     [SerializeField] private CurrencyDenomination[] _denominations;
     private List<GameObject> _spawnedMoney = new List<GameObject>();
 
@@ -93,27 +72,6 @@ public class Gameplay : MonoBehaviour
     {
         public int value;
         public GameObject prefab;
-    }
-
-    public AudioSource audioSource;
-    
-    [Header("Sound effects")]
-    public AudioClip dialogueClickSound; 
-    public AudioClip statChangeSound;    
-    public AudioClip moneyChangeSound;
-    public AudioClip breakSound;
-
-    [Header("Music")]
-    public AudioSource bgmSource;
-    public AudioClip backgroundMusic;  
-
-
-    private void PlaySound(AudioClip clip)
-    {
-        if (audioSource != null && clip != null)
-        {
-            audioSource.PlayOneShot(clip);
-        }
     }
 
     private string GetHealthDescription(HealthLevel health)
@@ -154,20 +112,9 @@ public class Gameplay : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (healthTextUI != null)
-        {
-            healthTextUI.text = "Health: " + GetHealthDescription(currentHealth);
-        }
-
-        if (stressTextUI != null)
-        {
-            stressTextUI.text = "Stress: " + GetStressDescription(currentStress);
-        }
-
-        if (relationsTextUI != null)
-        {
-            relationsTextUI.text = "Relations: " + GetRelationsDescription(currentRelations);
-        }
+        if (healthTextUI != null) healthTextUI.text = "Health: " + GetHealthDescription(currentHealth);
+        if (stressTextUI != null) stressTextUI.text = "Stress: " + GetStressDescription(currentStress);
+        if (relationsTextUI != null) relationsTextUI.text = "Relations: " + GetRelationsDescription(currentRelations);
         
         GenerateMoney(money);
     }
@@ -175,7 +122,6 @@ public class Gameplay : MonoBehaviour
     private void GenerateMoney(int targetAmount)
     {
         ClearPreviousMoney();
-
 
         int currentAmount = targetAmount;
         int spawnIndex = 0; 
@@ -221,7 +167,6 @@ public class Gameplay : MonoBehaviour
         _spawnedMoney.Clear();
     }
 
-
     private void PushVariablesToDial()
     {
         Dial.SetInt("Health", (int)currentHealth);
@@ -245,8 +190,9 @@ public class Gameplay : MonoBehaviour
         currentRelations = newRelations;
         money = newMoney;
 
-        if (statsChanged) PlaySound(statChangeSound);
-        if (moneyChanged) PlaySound(moneyChangeSound);
+        // Using audioManager to play sound effects when stats or money change
+        if (statsChanged) AudioManager.Instance.PlayStatChange();
+        if (moneyChanged) AudioManager.Instance.PlayMoneyChange();
 
         UpdateUI();
     }
@@ -280,17 +226,14 @@ public class Gameplay : MonoBehaviour
             case GameState.DIALOGUE: {
                 if (triggerOnce) {
                     triggerOnce = false;
-                    
                 }
-                
-                
                 
                 /* keyboard events */
                 if (Dial.IsCurrentStatus(state, Dial.Status.WAIT_FOR_CONTINUATION)) {
                     if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) {
                         Dial.Continuation(state);
 
-                        PlaySound(dialogueClickSound);
+                        AudioManager.Instance.PlayDialogueClick();
 
                         haveTextsChanged = true;
                         PullVariablesFromDial();
@@ -299,12 +242,11 @@ public class Gameplay : MonoBehaviour
                 if (Dial.IsCurrentStatus(state, Dial.Status.WAIT_FOR_CHOICE)) {
                     int choices_s = Dial.GetChoicesSize(state);
                     for (int i = 0; i < choices_s; i++) {
-                        /* @TODO checks here if the option is clicked with mouse */
                         if (Input.GetKeyUp(keypadCodes[i + 1])) {
                             bool isValid = Dial.IsChoiceValid(state, i);
                             if (!isValid) { continue; }
                             
-                            PlaySound(dialogueClickSound);
+                            AudioManager.Instance.PlayDialogueClick();
 
                             Dial.Choice(state, i);
                             PullVariablesFromDial();
@@ -414,11 +356,9 @@ public class Gameplay : MonoBehaviour
                         float moveValue = (state.textObjs[i].yDestPos - scrollValue - state.textObjs[i].yPos);
                         if (moveValue > 0.5f)  state.textObjs[i].yPos += Mathf.Sqrt(Mathf.Abs(moveValue));
                         if (moveValue < -0.5f) state.textObjs[i].yPos -= Mathf.Sqrt(Mathf.Abs(moveValue));
-                        //textRect = rect.Rect_I(xPosTextModule, state.textObjs[i].yPos + yPosTextModule, xPosTextModule + widthTextModule, (state.textObjs[i].yPos + state.textObjs[i].height) + yPosTextModule); // CS
                         texts[i].transform.position = new Vector3(xPosTextModule, state.textObjs[i].yPos + yPosTextModule, 0.0f); // CS
                     }
                     texts.Clear();
-
                 }
                 break;
             }
@@ -428,11 +368,11 @@ public class Gameplay : MonoBehaviour
                     triggerOnce = false;
                     texts = new List<GameObject>();
                     
-                    //Dial.SetString("NextDialogue", "");
                     state = Dial.State_I(Dial.GetString("NextDialogue"));
                     
                     breakObj.SetActive(true);
-                    PlaySound(breakSound);
+
+                    AudioManager.Instance.PlayBreakSound();
                 }
                 breakTime += Time.deltaTime;
                 
@@ -442,15 +382,9 @@ public class Gameplay : MonoBehaviour
                     breakObj.SetActive(false);
                     triggerOnce = true;
                 }
-
                 break;
             }
             default: break;
         }
-        
-        
-                    
     }
-    
-    
 }
