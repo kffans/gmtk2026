@@ -43,6 +43,8 @@ public class Gameplay : MonoBehaviour
     private List<GameObject> texts = null;
     public List<string> availableDays;
 
+    private bool deathEventTriggered = false;
+    private bool creditsEventTriggered = false;
     /// <summary>
     /// Variables for handling the mana system
     /// </summary>
@@ -263,8 +265,17 @@ public class Gameplay : MonoBehaviour
                     {
                         dialogueFinish = false;
                         
-                        if (Dial.GetString("NextDialogue") == "credits") 
+                        bool isStatsCritical = (int)currentHealth <= 1 || (int)currentStress <= 1 || (int)currentRelations <= 1;
+
+                        if (isStatsCritical && !deathEventTriggered)
                         {
+                            deathEventTriggered = true;
+                            Dial.SetString("NextDialogue", "death");
+                            gameState = GameState.BREAK;
+                        }
+                        else if (Dial.GetString("NextDialogue") == "credits" && !creditsEventTriggered) 
+                        {
+                            creditsEventTriggered = true;
                             gameState = GameState.CREDITS;
                         }
                         else if (availableDays != null && availableDays.Count > 0) 
@@ -277,8 +288,14 @@ public class Gameplay : MonoBehaviour
                             Dial.SetString("NextDialogue", chosenDay);
                             gameState = GameState.BREAK;
                         }
-                        else {
+                        else if (!creditsEventTriggered) 
+                        {
+                            creditsEventTriggered = true;
                             Dial.SetString("NextDialogue", "credits");
+                            gameState = GameState.BREAK;
+                        }
+                        else
+                        {
                             gameState = GameState.CREDITS;
                         }
                         

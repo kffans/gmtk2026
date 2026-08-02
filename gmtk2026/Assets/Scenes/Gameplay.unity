@@ -393,7 +393,7 @@ MonoBehaviour:
   dialogueClick: {fileID: 8300000, guid: c168930b54f98fc4e844917af4625701, type: 3}
   statChange: {fileID: 8300000, guid: 6512d3ec7dce35c40af32b8f2a2f43c4, type: 3}
   moneyChange: {fileID: 8300000, guid: 362c61d0fa5637140b6ae381f2eca211, type: 3}
-  breakSound: {fileID: 8300000, guid: 1dcf91deec19a41448672efcc95ebfe6, type: 3}
+  interlude: {fileID: 8300000, guid: 1dcf91deec19a41448672efcc95ebfe6, type: 3}
   menuMusic: {fileID: 8300000, guid: a8dc0a5fe065f8445bc02a94441c1aae, type: 3}
 --- !u!4 &341930394
 Transform:
@@ -1691,6 +1691,7 @@ MonoBehaviour:
   breakObj: {fileID: 1248095410}
   availableDays:
   - mirek
+  - eagle
   currentHealth: 2
   currentStress: 2
   currentRelations: 2
@@ -1699,7 +1700,7 @@ MonoBehaviour:
   relationsTextUI: {fileID: 2009132873}
   healthTextUI: {fileID: 1053422339}
   _moneySpawnContainer: {fileID: 2092108535}
-  _spacing: {x: 15, y: 10}
+  _spacing: {x: 25, y: 0}
   _denominations:
   - value: 1
     prefab: {fileID: 4794771804176729531, guid: e229c557ba52cd14e9ea8df603d1de02, type: 3}

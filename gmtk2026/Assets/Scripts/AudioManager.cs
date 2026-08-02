@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip dialogueClick; 
     public AudioClip statChange;    
     public AudioClip moneyChange;
-    public AudioClip breakSound;
+    public AudioClip interlude;
 
     [Header("Music")]
     public AudioClip menuMusic;  
@@ -45,8 +45,8 @@ public class AudioManager : MonoBehaviour
             case "moneyChange":
                 clipToPlay = moneyChange;
                 break;
-            case "break":
-                clipToPlay = breakSound;
+            case "interlude":
+                clipToPlay = interlude;
                 break;
             default:
                 Debug.LogWarning("Nie znaleziono efektu dźwiękowego o nazwie: " + soundEffectName);
