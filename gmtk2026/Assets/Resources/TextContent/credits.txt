@@ -47,6 +47,6 @@ All of this wasn't worth it. The system chewed me up and spat me out. I'm going 
 |
 Well... at least I'm alive. For now.
 |
-#Money += 30#
+#Money += 500#
 #Stress += 1#
 |~

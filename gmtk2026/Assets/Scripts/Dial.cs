@@ -1164,19 +1164,24 @@ public class Dial {
         }
     }
 
-    public static void SpecInstrInterpret (State state, string instrText) { /* special instructions interpreter */
+    public static void SpecInstrInterpret (State state, string instrText) 
+    { 
         List<string> segments = SplitInstrSegments(instrText);
         int segments_s = segments.Count;
+
+        if (segments_s == 0 || string.IsNullOrEmpty(segments[0])) {
+            Error("Empty special instruction.", state.text, state.currentPos.text_i);
+            return;
+        }
 
         bool wasCommandFound = false;
         bool hasEnoughArguments = true;
         int textLength = segments[0].Length;
+
         while (textLength != 0 && !wasCommandFound) {
             string textSegment = segments[0].Substring(0, textLength);
 
-
-            /* displays number in the text itself: "#Money = 50#I have @DISPLAY Money@ dollars."  .  "I have 50 dollars." */
-            if (textSegment == "DISPLAY".Substring(0, textLength)) {
+            if (textLength <= "DISPLAY".Length && textSegment == "DISPLAY".Substring(0, textLength)) {
                 if (segments_s < 2) { hasEnoughArguments = false; break; }
                 segments.RemoveAt(0);
                 Pair varText = OperationsInterpret(state, segments);
@@ -1188,17 +1193,14 @@ public class Dial {
                 }
                 wasCommandFound = true;
             }
-            /* saves the game to a file */
-            else if (textSegment == "SAVE".Substring(0, textLength)) {
+            else if (textLength <= "SAVE".Length && textSegment == "SAVE".Substring(0, textLength)) {
                 // StateSave(state); /* @TODO */
                 wasCommandFound = true;
             }
-            /* resets the values of 'temporary' variables (those starting with lowercase) */
-            else if (textSegment == "RESET".Substring(0, textLength)) {
-                /*ResetVars();*/
+            else if (textLength <= "RESET".Length && textSegment == "RESET".Substring(0, textLength)) {
                 wasCommandFound = true;
             }
-            else if (textSegment == "WAIT".Substring(0, textLength)) {
+            else if (textLength <= "WAIT".Length && textSegment == "WAIT".Substring(0, textLength)) {
                 if (segments_s < 2) { hasEnoughArguments = false; break; }
                 string waitNumberText = segments[1];
                 bool hasSucceeded = false; int waitNumber = (int)stringToInt(waitNumberText, ref hasSucceeded);
@@ -1210,11 +1212,18 @@ public class Dial {
                 }
                 wasCommandFound = true;
             }
-            else if (textSegment == "IMG".Substring(0, textLength)) {
+            else if (textLength <= "IMG".Length && textSegment == "IMG".Substring(0, textLength)) {
                 if (segments_s < 2) { hasEnoughArguments = false; break; }
                 string imgName = segments[1];
                 state.frames.Add(imgName);
                 state.shouldChangeFrame = true;
+                wasCommandFound = true;
+            }
+            else if (textLength <= "MUSIC".Length && textSegment == "MUSIC".Substring(0, textLength)) {
+                if (segments_s < 2) { hasEnoughArguments = false; break; }
+                string musicName = segments[1];
+                Debug.LogWarning("Playing music: " + musicName);
+                AudioManager.Instance.PlayMusic(musicName);
                 wasCommandFound = true;
             }
             textLength--;

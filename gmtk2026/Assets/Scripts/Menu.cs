@@ -6,7 +6,7 @@ public class Menu : MonoBehaviour
     {
         if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.PlayMusic("menuMusic");
+            AudioManager.Instance.PlayMusic("menu");
         }
         else
         {

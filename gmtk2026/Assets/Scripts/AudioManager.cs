@@ -15,7 +15,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip interlude;
 
     [Header("Music")]
-    public AudioClip menuMusic;  
+    public AudioClip menu;
+    public AudioClip intro;    
 
     private void Awake()
     {
@@ -67,8 +68,11 @@ public class AudioManager : MonoBehaviour
 
         switch (musicName)
         {
-            case "menuMusic":
-                clipToPlay = menuMusic; 
+            case "menu":
+                clipToPlay = menu; 
+                break;
+            case "intro":
+                clipToPlay = intro; 
                 break;
             default:
                 Debug.LogWarning("There is no such: " + musicName);
