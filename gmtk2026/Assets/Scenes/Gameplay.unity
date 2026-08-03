@@ -1696,12 +1696,12 @@ MonoBehaviour:
   currentHealth: 2
   currentStress: 2
   currentRelations: 2
-  money: 100
+  money: 120
   stressTextUI: {fileID: 1692158182}
   relationsTextUI: {fileID: 2009132873}
   healthTextUI: {fileID: 1053422339}
   _moneySpawnContainer: {fileID: 2092108535}
-  _spacing: {x: 25, y: 0}
+  _spacing: {x: 30, y: 0}
   _denominations:
   - value: 1
     prefab: {fileID: 4794771804176729531, guid: e229c557ba52cd14e9ea8df603d1de02, type: 3}

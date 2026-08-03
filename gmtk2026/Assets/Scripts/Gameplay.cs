@@ -76,6 +76,8 @@ public class Gameplay : MonoBehaviour
         public GameObject prefab;
     }
 
+    private bool isNextEvening = false;
+
     private string GetHealthDescription(HealthLevel health)
     {
         switch (health)
@@ -278,6 +280,12 @@ public class Gameplay : MonoBehaviour
                             creditsEventTriggered = true;
                             gameState = GameState.CREDITS;
                         }
+                        else if (isNextEvening) 
+                        {
+                            Dial.SetString("NextDialogue", "evening"); 
+                            isNextEvening = false;
+                            gameState = GameState.BREAK;
+                        }
                         else if (availableDays != null && availableDays.Count > 0) 
                         {
                             int randomIndex = Random.Range(0, availableDays.Count);
@@ -286,6 +294,7 @@ public class Gameplay : MonoBehaviour
                             availableDays.RemoveAt(randomIndex); 
                             
                             Dial.SetString("NextDialogue", chosenDay);
+                            isNextEvening = true; 
                             gameState = GameState.BREAK;
                         }
                         else if (!creditsEventTriggered) 
