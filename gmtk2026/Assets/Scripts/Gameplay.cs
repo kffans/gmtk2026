@@ -232,6 +232,7 @@ public class Gameplay : MonoBehaviour
                 gameState = GameState.DIALOGUE;
                 Dial.SetString("NextDialogue", "intro");   
                 state = Dial.State_I(Dial.GetString("NextDialogue"));
+                state.flags = Dial.Flags.IGNORE_ACTOR_NAME;
                 break;
             }
             case GameState.DIALOGUE: {

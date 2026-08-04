@@ -59,7 +59,8 @@ public class Dial {
     [Flags]
     public enum Flags {
         NONE = 0,
-        LEAVE_PREFIX_AFTER_CHOICE = 1 << 0
+        LEAVE_PREFIX_AFTER_CHOICE = 1 << 0,
+        IGNORE_ACTOR_NAME = 2 << 0
     }
     
     public class Pair {
@@ -258,7 +259,6 @@ public class Dial {
                 case '|': {
                     if (txt[t_i + 1] == '~') {
                         chars['~'].count++;
-                        goto EndOfCounting;
                     }
                     else if (txt[t_i + 1] == '|') {
                         chars['|'].count++;
@@ -270,7 +270,6 @@ public class Dial {
             }
             t_i++;
         }
-        EndOfCounting:
         t_i = 0;
 
         /* @TODO positions in detected errors, where possible */
@@ -2176,7 +2175,7 @@ public class Dial {
                             break;
                         }
                         default: {
-                            if (hasActorNameOccured == false && txt[t_i] == ':') {
+                            if (!state.flags.HasFlag(Flags.IGNORE_ACTOR_NAME) && hasActorNameOccured == false && txt[t_i] == ':') {
                                 hasActorNameOccured = true;
                                 state.actor_n = RemoveWhitespace(state.displayText);
                                 state.displayText = "";
