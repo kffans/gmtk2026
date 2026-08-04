@@ -1663,6 +1663,7 @@ MonoBehaviour:
   statChange: {fileID: 8300000, guid: 6512d3ec7dce35c40af32b8f2a2f43c4, type: 3}
   moneyChange: {fileID: 8300000, guid: 362c61d0fa5637140b6ae381f2eca211, type: 3}
   interlude: {fileID: 8300000, guid: 1dcf91deec19a41448672efcc95ebfe6, type: 3}
+  buttonClick: {fileID: 8300000, guid: 37ffbd0ad33cf324ab23c0664730f96a, type: 3}
   menu: {fileID: 8300000, guid: a8dc0a5fe065f8445bc02a94441c1aae, type: 3}
   intro: {fileID: 8300000, guid: ff33553d19cb94745810db49e6e822d5, type: 3}
 --- !u!1 &1857009644

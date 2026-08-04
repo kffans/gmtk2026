@@ -16,6 +16,7 @@ public class Menu : MonoBehaviour
 
     public void StartGame()
     {
+        AudioManager.Instance.PlaySFX("buttonClick");
         SceneManager.LoadScene("Gameplay");
     }
 

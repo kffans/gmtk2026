@@ -56,6 +56,7 @@ public class Gameplay : MonoBehaviour
     public StressLevel currentStress = StressLevel.Breeze;
     public RelationsLevel currentRelations = RelationsLevel.Loving;
     public int money = 100;
+    public int currentDay = 0;
 
     /// <summary>
     /// For displaying current states of variables
@@ -63,6 +64,7 @@ public class Gameplay : MonoBehaviour
     public TextMeshProUGUI stressTextUI; 
     public TextMeshProUGUI relationsTextUI;
     public TextMeshProUGUI healthTextUI;
+    public TextMeshProUGUI dayTextUI;
 
     [SerializeField] private Transform _moneySpawnContainer;
     [SerializeField] private Vector2 _spacing = new Vector2(1.5f, 0f);
@@ -119,6 +121,7 @@ public class Gameplay : MonoBehaviour
         if (healthTextUI != null) healthTextUI.text = "Health: " + GetHealthDescription(currentHealth);
         if (stressTextUI != null) stressTextUI.text = "Stress: " + GetStressDescription(currentStress);
         if (relationsTextUI != null) relationsTextUI.text = "Relations: " + GetRelationsDescription(currentRelations);
+        if (dayTextUI != null) dayTextUI.text = "Day: " + currentDay;
         
         GenerateMoney(money);
     }
@@ -176,6 +179,7 @@ public class Gameplay : MonoBehaviour
         Dial.SetInt("Health", (int)currentHealth);
         Dial.SetInt("Stress", (int)currentStress);
         Dial.SetInt("Relations", (int)currentRelations);
+        Dial.SetInt("Day", currentDay);
         Dial.SetInt("Money", money);
     }
 
@@ -184,6 +188,7 @@ public class Gameplay : MonoBehaviour
         HealthLevel newHealth = (HealthLevel)Dial.GetInt("Health");
         StressLevel newStress = (StressLevel)Dial.GetInt("Stress");
         RelationsLevel newRelations = (RelationsLevel)Dial.GetInt("Relations");
+        int newDay = Dial.GetInt("Day");
         int newMoney = Dial.GetInt("Money");
 
         bool statsChanged = (newHealth != currentHealth || newStress != currentStress || newRelations != currentRelations);
@@ -193,6 +198,7 @@ public class Gameplay : MonoBehaviour
         currentStress = newStress;
         currentRelations = newRelations;
         money = newMoney;
+        currentDay = newDay;    
 
         
         if (statsChanged) AudioManager.Instance.PlaySFX("statChange");
@@ -201,7 +207,8 @@ public class Gameplay : MonoBehaviour
         UpdateUI();
     }
     
-    void Start () {
+    void Start () 
+    {
         if (_denominations != null && _denominations.Length > 0)
         {
             _denominations = _denominations.OrderByDescending(d => d.value).ToArray();
@@ -288,6 +295,11 @@ public class Gameplay : MonoBehaviour
                         }
                         else if (availableDays != null && availableDays.Count > 0) 
                         {
+
+                            currentDay++; 
+                            PushVariablesToDial();
+                            UpdateUI();
+
                             int randomIndex = Random.Range(0, availableDays.Count);
                             string chosenDay = availableDays[randomIndex];
                             

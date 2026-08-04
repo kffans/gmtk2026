@@ -1,11 +1,10 @@
 # To-Do List
 ## Scripting
-- Upgrade Dial engine to store effects to affect other days
 - Move UI logic to UIManager.
 - create save/load system
 - make ending when every stats is eligible for ending
-- edit gameplay to store events that will affect us during game
 - make ui for audio adjusting, fullscreen, controls
+- understand every rule in dial system
 
 ## Audio
 - Add sounds and music for the evening phase.
@@ -17,8 +16,6 @@
 - create options
 - create images for every scene
 
-
-
 ## Story
 - Write evening activity scenarios.
 - Write the true outro.
@@ -26,12 +23,8 @@
 - repair eagle story its broken
 - made story more compact
 
-
 # Tasks in doing
-
-## Chazar
-
-
+- edit gameplay to store events that will affect us during game
 
 # Done
 - make death mechanic

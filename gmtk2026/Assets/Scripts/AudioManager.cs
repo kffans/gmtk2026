@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip statChange;    
     public AudioClip moneyChange;
     public AudioClip interlude;
+    public AudioClip buttonClick;
 
     [Header("Music")]
     public AudioClip menu;
@@ -34,6 +35,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(string soundEffectName)
     {
         AudioClip clipToPlay = null;
+        
 
         switch (soundEffectName)
         {
@@ -48,6 +50,9 @@ public class AudioManager : MonoBehaviour
                 break;
             case "interlude":
                 clipToPlay = interlude;
+                break;
+            case "buttonClick":
+                clipToPlay = buttonClick;
                 break;
             default:
                 Debug.LogWarning("Nie znaleziono efektu dźwiękowego o nazwie: " + soundEffectName);

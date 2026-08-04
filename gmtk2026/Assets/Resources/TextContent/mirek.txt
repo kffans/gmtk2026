@@ -35,10 +35,11 @@ What do you do?
 {“Sure, but you’re not going to screw me over, right?”}
     /*(50% chance that Mirek runs off, but if he doesn’t, you earn between 10 and 30 gelds every day. Each day, there is also a chance that Mirek gets caught, which ends your passive income.)*/
     #Money -= offer#
+    #MirekBusinessCard#
     &RANDOM > 50&
         #MirekPassiveIncome#
     ||
-    "Friend, you remember the nutsack twisting back in military? True friendships are forged on that. I'd never ever ever never run off with the money like that."
+    "Friend, you remember the nutsack twisting back in military? True friendships are forged on that. I'd never ever ever never run off with the money like that. Here you can have my business card"
     |
 {“Hoooow much? Angle grinders come *way* cheaper.”} 
     /*(Negotiate: 80% chance that you pay more, namely 120 gelds , and 10% chance that you pay 50 gelds.)*/
@@ -57,6 +58,7 @@ What do you do?
         &Money >= offer&
         {"Deal."}
             #Money -= offer##MirekPassiveIncome#
+            #MirekBusinessCard#
             "A person I can count on, *that's* valuable!"
         ||
         &Money < offer&

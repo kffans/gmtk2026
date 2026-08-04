@@ -1,4 +1,22 @@
-There is an evening now
+There is an evening now.
 |
-Yep...
+&MirekPassiveIncome == 1&
+    &RANDOM > 50&
+        #Money += 10#
+        Mirek gives cash.
+        |
+    ||
+||
+What do you want to do?
+|
+{
+{"What items do I have?"}
+    Let's see what I have in my pockets...
+    
+    &MirekBusinessCard == 1&
+        - Mirek's Business Card
+    ||
+{"Go to sleep"}
+    Time to rest.
+}
 |~

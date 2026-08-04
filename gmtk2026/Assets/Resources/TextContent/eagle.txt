@@ -10,155 +10,347 @@ I had absolutely no idea what kind of brain rot he was suffering from, so I kept
 |
 {
     {"Keep walking."}
-        "The man kept following me, and his shouting was getting increasingly pushy."
+        The man kept following me, and his shouting was getting increasingly pushy.
         |
-        "“Eagle! EEEagle!”"
+        “Eagle! EEEagle!”
         |
         {
             {"Start running."}
-                #RUN_SCENE#
-            ||
+                I started running as fast as my alcohol-soaked legs could carry me.
+                |
+                The man started running right after me, laughing out loud, choking horribly, and chanting: “Eagle, EEEagle, Eagllle, Eagl, Oooooooooooooooooooooooooooooooooooooooooooooo!”
+                |
+                While running, I quickly got tired. I knew I had to hide somewhere, otherwise he'd harass me again.
+                |
+                {
+                    {"Hide on the street corner."}
+                        I hid on the street corner, but he found me anyway.
+                        |
+                        His facial expression changed, he turned off the camera, and pure hatred shone in his eyes.
+                        |
+                        I try to throw a lesson-teaching haymaker at him, but the state I'm in doesn't really help.
+                        |
+                        The punch hit him in the face, but didn't do much damage. It only served to unleash the beast.
+                        |
+                        The man turned bright red, clocked me right in the eye, pulled my sweater over my head, and gave me a severe beating.
+                        |
+                        “Eaaaaaagleeeeeeeeeeeeeeeeeeeeee!” he yelled into the night until he was too far away to be heard.
+                        |
+                        #Health -= 1#
+                        I dragged my sore body home.
+                        |~
+                    {"Go to the local shop."}
+                        I ran to the local shop, where a good number of my friends were already enjoying a few beers.
+                        |
+                        When I approached them, they looked at me like I was crazy, since I was sweating profusely through my heavy sweater.
+                        |
+                        From afar, I noticed the man with the camera. Seeing the crowd of lads, he slowly backed away into the shadows.
+                        |
+                        After hanging around the shop for a few moments, I went home in peace.
+                        |~
+                }
             {"“What?!”"}
-                #HEIST_OFFER#
-            ||
+                Hearing this, the man smiled, exposing a terrifying set of teeth, and shoved the camera closer.
+                |
+                “Eagle, you're gonna bake in that sweater! But that's beside the point. I've got a proposition for you: I'm planning a heist on a cheap wine warehouse. Are you in?”
+                |
+                “We'll split the loot equally, you're the last person I need to complete the crew. Are you in?”
+                |
+                {
+                    {"Keep walking."}
+                        I walked past him, but after a moment he started following me again, constantly calling out: “Eagle, Eagle, Eagle...”
+                        |
+                        Repeating it over and over, the chance of shaking him off was slim. A moment later, he approached me again.
+                        |
+                        “So, Eagle? What about that cheap wine warehouse?”
+                        |~
+                    {"“I'm in!”"}
+                        “Awesome, come on, let me introduce you to the crew.”
+                        |
+                        I started following him. We walked through the estate next to the stench factory where I work; he kept holding the camera the whole time, blabbering into it about “Eagle and I on a secret mission”.
+                        |
+                        We entered a suburb full of single-family houses, opposite which stood the cheap wine factory. I still remember working there... bad memories.
+                        |
+                        In that neighborhood, one wooden shack caught my eye — three bums were leaning against it, smoking cigarettes that smelled like burnt rubber. Jin Lings from Cathay, no doubt.
+                        |
+                        “Here's my crew: Wołoch!” pointing at a ginger old-timer standing next to a bike with a trailer. He zoomed in massively with the camera, revealing the guy's huge red schnoz.
+                        |
+                        “And, uhhh... I don't remember their names, but luckily it doesn't matter,” he added, pointing to a couple who didn't really know where they were or what year it was.
+                        |
+                        “The plan is simple: Eagle here is our scout. Your job will be to distract the security guy standing near the warehouse while we break in. After everything, we meet here, split the loot, and act like we don't know each other.”
+                        |
+                        {
+                            {"“Alright, let's do this!”"}
+                                “Awesome! Wołoch, get on the bike, forward!”
+                                |
+                                We started walking towards the factory, passing through its large gate. Most workers had already left, leaving only two cars in the lot — prime time for a heist.
+                                |
+                                “See that guard booth over there? You've got a silver tongue, Eagle. At all costs, get his attention for about 10 minutes, then clear out.” They headed toward the warehouses.
+                                |
+                                I approached the booth. The guy was older than me, ghost-white, with an expression like he was five minutes away from death, watching a football match on a tiny TV.
+                                |
+                                I'm screwed, I know nothing about football... what am I supposed to say to him?
+                                |
+                                {
+                                    {"Start making up that you're reminiscing about the old days."}
+                                        “Listen, man, I'm just walking around reminiscing about the times I used to work here,” I said.
+                                        |
+                                        “Haha, what are you talking about?!” the guard wheezed. “It's such a shitshow here! Where do you work that you feel like reminiscing about such garbage? Only at the stench factory do they have it worse.”
+                                        |
+                                        Hearing this, I couldn't take it. “Hey, you old geezer! Listen here, no dissing allowed! I work a lousy job myself, and you're gonna insult me here?!”
+                                        |
+                                        “You really work there? Haha!” While laughing, he looked to the side and caught a glimpse of Wołoch clumsily loading cheap wine into his trailer.
+                                        |
+                                        “Hey, what's going on over there?!” He ran out of his guard shack toward the thieves. Sensing trouble, I quickly ran home.
+                                        |~
+                                    {"Start complaining about the national team."}
+                                        “I see you're watching our slackers?”
+                                        |
+                                        “Aaah, get outta here, don't even get me started!” the old man yelled.
+                                        |
+                                        “Did you see how they played recently?! Such clumsy fools, such absolute nobodies! I'd take every last one of them and kick their asses! They earn so much dough and can't even run after a damn ball!”
+                                        |
+                                        The old guy launched into a massive tirade, explaining how he personally would fix the whole national team, the government, and the entire country using violence.
+                                        |
+                                        This ramble took way more than 10 minutes. Once it finally ended, I quickly said goodbye and headed towards the rendezvous point.
+                                        |
+                                        At the spot, I found Wołoch and his two companions — without the guy with the camera — lying completely wasted with a heap of empty bottles around them.
+                                        |
+                                        Only their loud snoring broke the silence. I decided to take the empty bottles and the remaining unopened cheap wine to sell them at the local store.
+                                        |
+                                        #Money += 40#
+                                        |~
+                                }
+                            {"“Yeah... no way.” (Run away)"}
+                                I turned on my heel and left those idiots before the police showed up.
+                                |~
+                        }
+                    {"“Forget it, I'm going home.” (Run away)"}
+                        I walked away, leaving the bald guy talking to his camera.
+                        |~
+                }
             {"Attack him."}
-                #BEATING_SCENE#
+                I try to throw a lesson-teaching haymaker at him, but the state I'm in doesn't really help.
+                |
+                The punch hit him in the face, but didn't do much damage. It only served to unleash the beast.
+                |
+                The man turned bright red, clocked me right in the eye, pulled my sweater over my head, and gave me a severe beating.
+                |
+                “Eaaaaaagleeeeeeeeeeeeeeeeeeeeee!” he yelled into the night until he was too far away to be heard.
+                |
+                #Health -= 1#
+                I dragged my sore body home.
+                |~
         }
-    ||
     {"“Get lost, chrome-dome.”"}
-        "Hearing this, the man let out a laugh that sounded like a dying tractor trying to cough up a lung, and then kept following me anyway."
+        Hearing this, the man let out a laugh that sounded like a dying tractor trying to cough up a lung, and then kept following me anyway.
         |
         {
             {"Start running."}
-                #RUN_SCENE#
-            ||
+                I started running as fast as my alcohol-soaked legs could carry me.
+                |
+                The man started running right after me, laughing out loud, choking horribly, and chanting: “Eagle, EEEagle, Eagllle, Eagl, Oooooooooooooooooooooooooooooooooooooooooooooo!”
+                |
+                While running, I quickly got tired. I knew I had to hide somewhere, otherwise he'd harass me again.
+                |
+                {
+                    {"Hide on the street corner."}
+                        I hid on the street corner, but he found me anyway.
+                        |
+                        His facial expression changed, he turned off the camera, and pure hatred shone in his eyes.
+                        |
+                        I try to throw a lesson-teaching haymaker at him, but the state I'm in doesn't really help.
+                        |
+                        The punch hit him in the face, but didn't do much damage. It only served to unleash the beast.
+                        |
+                        The man turned bright red, clocked me right in the eye, pulled my sweater over my head, and gave me a severe beating.
+                        |
+                        “Eaaaaaagleeeeeeeeeeeeeeeeeeeeee!” he yelled into the night until he was too far away to be heard.
+                        |
+                        #Health -= 1#
+                        I dragged my sore body home.
+                        |~
+                    {"Go to the local shop."}
+                        I ran to the local shop, where a good number of my friends were already enjoying a few beers.
+                        |
+                        When I approached them, they looked at me like I was crazy, since I was sweating profusely through my heavy sweater.
+                        |
+                        From afar, I noticed the man with the camera. Seeing the crowd of lads, he slowly backed away into the shadows.
+                        |
+                        After hanging around the shop for a few moments, I went home in peace.
+                        |~
+                }
             {"“What?!”"}
-                #HEIST_OFFER#
-            ||
+                Hearing this, the man smiled, exposing a terrifying set of teeth, and shoved the camera closer.
+                |
+                “Eagle, you're gonna bake in that sweater! But that's beside the point. I've got a proposition for you: I'm planning a heist on a cheap wine warehouse. Are you in?”
+                |
+                “We'll split the loot equally, you're the last person I need to complete the crew. Are you in?”
+                |
+                {
+                    {"Keep walking."}
+                        I walked past him, but after a moment he started following me again, constantly calling out: “Eagle, Eagle, Eagle...”
+                        |
+                        Repeating it over and over, the chance of shaking him off was slim. A moment later, he approached me again.
+                        |
+                        “So, Eagle? What about that cheap wine warehouse?”
+                        |~
+                    {"“I'm in!”"}
+                        “Awesome, come on, let me introduce you to the crew.”
+                        |
+                        I started following him. We walked through the estate next to the stench factory where I work; he kept holding the camera the whole time, blabbering into it about “Eagle and I on a secret mission”.
+                        |
+                        We entered a suburb full of single-family houses, opposite which stood the cheap wine factory. I still remember working there... bad memories.
+                        |
+                        In that neighborhood, one wooden shack caught my eye — three bums were leaning against it, smoking cigarettes that smelled like burnt rubber. Jin Lings from Cathay, no doubt.
+                        |
+                        “Here's my crew: Wołoch!” pointing at a ginger old-timer standing next to a bike with a trailer. He zoomed in massively with the camera, revealing the guy's huge red schnoz.
+                        |
+                        “And, uhhh... I don't remember their names, but luckily it doesn't matter,” he added, pointing to a couple who didn't really know where they were or what year it was.
+                        |
+                        “The plan is simple: Eagle here is our scout. Your job will be to distract the security guy standing near the warehouse while we break in. After everything, we meet here, split the loot, and act like we don't know each other.”
+                        |
+                        {
+                            {"“Alright, let's do this!”"}
+                                “Awesome! Wołoch, get on the bike, forward!”
+                                |
+                                We started walking towards the factory, passing through its large gate. Most workers had already left, leaving only two cars in the lot — prime time for a heist.
+                                |
+                                “See that guard booth over there? You've got a silver tongue, Eagle. At all costs, get his attention for about 10 minutes, then clear out.” They headed toward the warehouses.
+                                |
+                                I approached the booth. The guy was older than me, ghost-white, with an expression like he was five minutes away from death, watching a football match on a tiny TV.
+                                |
+                                I'm screwed, I know nothing about football... what am I supposed to say to him?
+                                |
+                                {
+                                    {"Start making up that you're reminiscing about the old days."}
+                                        “Listen, man, I'm just walking around reminiscing about the times I used to work here,” I said.
+                                        |
+                                        “Haha, what are you talking about?!” the guard wheezed. “It's such a shitshow here! Where do you work that you feel like reminiscing about such garbage? Only at the stench factory do they have it worse.”
+                                        |
+                                        Hearing this, I couldn't take it. “Hey, you old geezer! Listen here, no dissing allowed! I work a lousy job myself, and you're gonna insult me here?!”
+                                        |
+                                        “You really work there? Haha!” While laughing, he looked to the side and caught a glimpse of Wołoch clumsily loading cheap wine into his trailer.
+                                        |
+                                        “Hey, what's going on over there?!” He ran out of his guard shack toward the thieves. Sensing trouble, I quickly ran home.
+                                        |~
+                                    {"Start complaining about the national team."}
+                                        “I see you're watching our slackers?”
+                                        |
+                                        “Aaah, get outta here, don't even get me started!” the old man yelled.
+                                        |
+                                        “Did you see how they played recently?! Such clumsy fools, such absolute nobodies! I'd take every last one of them and kick their asses! They earn so much dough and can't even run after a damn ball!”
+                                        |
+                                        The old guy launched into a massive tirade, explaining how he personally would fix the whole national team, the government, and the entire country using violence.
+                                        |
+                                        This ramble took way more than 10 minutes. Once it finally ended, I quickly said goodbye and headed towards the rendezvous point.
+                                        |
+                                        At the spot, I found Wołoch and his two companions — without the guy with the camera — lying completely wasted with a heap of empty bottles around them.
+                                        |
+                                        Only their loud snoring broke the silence. I decided to take the empty bottles and the remaining unopened cheap wine to sell them at the local store.
+                                        |
+                                        #Money += 40#
+                                        |~
+                                }
+                            {"“Yeah... no way.” (Run away)"}
+                                I turned on my heel and left those idiots before the police showed up.
+                                |~
+                        }
+                    {"“Forget it, I'm going home.” (Run away)"}
+                        I walked away, leaving the bald guy talking to his camera.
+                        |~
+                }
             {"Attack him."}
-                #BEATING_SCENE#
+                I try to throw a lesson-teaching haymaker at him, but the state I'm in doesn't really help.
+                |
+                The punch hit him in the face, but didn't do much damage. It only served to unleash the beast.
+                |
+                The man turned bright red, clocked me right in the eye, pulled my sweater over my head, and gave me a severe beating.
+                |
+                “Eaaaaaagleeeeeeeeeeeeeeeeeeeeee!” he yelled into the night until he was too far away to be heard.
+                |
+                #Health -= 1#
+                I dragged my sore body home.
+                |~
         }
-    ||
     {"“What?!”"}
-        #HEIST_OFFER = 1#
-        "Hearing this, the man smiled, exposing a terrifying set of teeth, and shoved the camera closer."
+        Hearing this, the man smiled, exposing a terrifying set of teeth, and shoved the camera closer.
         |
-        "“Eagle, you're gonna bake in that sweater! But that's beside the point. I've got a proposition for you: I'm planning a heist on a cheap wine warehouse. Are you in?”"
+        “Eagle, you're gonna bake in that sweater! But that's beside the point. I've got a proposition for you: I'm planning a heist on a cheap wine warehouse. Are you in?”
         |
-        "“We'll split the loot equally, you're the last person I need to complete the crew. Are you in?”"
+        “We'll split the loot equally, you're the last person I need to complete the crew. Are you in?”
         |
         {
             {"Keep walking."}
-                "I walked past him, but after a moment he started following me again, constantly calling out: “Eagle, Eagle, Eagle...”"
+                I walked past him, but after a moment he started following me again, constantly calling out: “Eagle, Eagle, Eagle...”
                 |
-                "Repeating it over and over, the chance of shaking him off was slim. A moment later, he approached me again."
+                Repeating it over and over, the chance of shaking him off was slim. A moment later, he approached me again.
                 |
-                "“So, Eagle? What about that cheap wine warehouse?”"
-            ||
+                “So, Eagle? What about that cheap wine warehouse?”
+                |~
             {"“I'm in!”"}
-                "“Awesome, come on, let me introduce you to the crew.”"
+                “Awesome, come on, let me introduce you to the crew.”
                 |
-                "I started following him. We walked through the estate next to the stench factory where I work; he kept holding the camera the whole time, blabbering into it about “Eagle and I on a secret mission”."
+                I started following him. We walked through the estate next to the stench factory where I work; he kept holding the camera the whole time, blabbering into it about “Eagle and I on a secret mission”.
                 |
-                "We entered a suburb full of single-family houses, opposite which stood the cheap wine factory. I still remember working there... bad memories."
+                We entered a suburb full of single-family houses, opposite which stood the cheap wine factory. I still remember working there... bad memories.
                 |
-                "In that neighborhood, one wooden shack caught my eye — three bums were leaning against it, smoking cigarettes that smelled like burnt rubber. Jin Lings from Cathay, no doubt."
+                In that neighborhood, one wooden shack caught my eye — three bums were leaning against it, smoking cigarettes that smelled like burnt rubber. Jin Lings from Cathay, no doubt.
                 |
-                "“Here's my crew: Wołoch!” pointing at a ginger old-timer standing next to a bike with a trailer. He zoomed in massively with the camera, revealing the guy's huge red schnoz."
+                “Here's my crew: Wołoch!” pointing at a ginger old-timer standing next to a bike with a trailer. He zoomed in massively with the camera, revealing the guy's huge red schnoz.
                 |
-                "“And, uhhh... I don't remember their names, but luckily it doesn't matter,” he added, pointing to a couple who didn't really know where they were or what year it was."
+                “And, uhhh... I don't remember their names, but luckily it doesn't matter,” he added, pointing to a couple who didn't really know where they were or what year it was.
                 |
-                "“The plan is simple: Eagle here is our scout. Your job will be to distract the security guy standing near the warehouse while we break in. After everything, we meet here, split the loot, and act like we don't know each other.”"
+                “The plan is simple: Eagle here is our scout. Your job will be to distract the security guy standing near the warehouse while we break in. After everything, we meet here, split the loot, and act like we don't know each other.”
                 |
                 {
                     {"“Alright, let's do this!”"}
-                        "“Awesome! Wołoch, get on the bike, forward!”"
+                        “Awesome! Wołoch, get on the bike, forward!”
                         |
-                        "We started walking towards the factory, passing through its large gate. Most workers had already left, leaving only two cars in the lot — prime time for a heist."
+                        We started walking towards the factory, passing through its large gate. Most workers had already left, leaving only two cars in the lot — prime time for a heist.
                         |
-                        "“See that guard booth over there? You've got a silver tongue, Eagle. At all costs, get his attention for about 10 minutes, then clear out.” They headed toward the warehouses."
+                        “See that guard booth over there? You've got a silver tongue, Eagle. At all costs, get his attention for about 10 minutes, then clear out.” They headed toward the warehouses.
                         |
-                        "I approached the booth. The guy was older than me, ghost-white, with an expression like he was five minutes away from death, watching a football match on a tiny TV."
+                        I approached the booth. The guy was older than me, ghost-white, with an expression like he was five minutes away from death, watching a football match on a tiny TV.
                         |
-                        "I'm screwed, I know nothing about football... what am I supposed to say to him?"
+                        I'm screwed, I know nothing about football... what am I supposed to say to him?
                         |
                         {
                             {"Start making up that you're reminiscing about the old days."}
-                                "“Listen, man, I'm just walking around reminiscing about the times I used to work here,” I said."
+                                “Listen, man, I'm just walking around reminiscing about the times I used to work here,” I said.
                                 |
-                                "“Haha, what are you talking about?!” the guard wheezed. “It's such a shitshow here! Where do you work that you feel like reminiscing about such garbage? Only at the stench factory do they have it worse.”"
+                                “Haha, what are you talking about?!” the guard wheezed. “It's such a shitshow here! Where do you work that you feel like reminiscing about such garbage? Only at the stench factory do they have it worse.”
                                 |
-                                "Hearing this, I couldn't take it. “Hey, you old geezer! Listen here, no dissing allowed! I work a lousy job myself, and you're gonna insult me here?!”"
+                                Hearing this, I couldn't take it. “Hey, you old geezer! Listen here, no dissing allowed! I work a lousy job myself, and you're gonna insult me here?!”
                                 |
-                                "“You really work there? Haha!” While laughing, he looked to the side and caught a glimpse of Wołoch clumsily loading cheap wine into his trailer."
+                                “You really work there? Haha!” While laughing, he looked to the side and caught a glimpse of Wołoch clumsily loading cheap wine into his trailer.
                                 |
-                                "“Hey, what's going on over there?!” He ran out of his guard shack toward the thieves. Sensing trouble, I quickly ran home."
-                            ||
+                                “Hey, what's going on over there?!” He ran out of his guard shack toward the thieves. Sensing trouble, I quickly ran home.
+                                |~
                             {"Start complaining about the national team."}
-                                "“I see you're watching our slackers?”"
+                                “I see you're watching our slackers?”
                                 |
-                                "“Aaah, get outta here, don't even get me started!” the old man yelled."
+                                “Aaah, get outta here, don't even get me started!” the old man yelled.
                                 |
-                                "“Did you see how they played recently?! Such clumsy fools, such absolute nobodies! I'd take every last one of them and kick their asses! They earn so much dough and can't even run after a damn ball!”"
+                                “Did you see how they played recently?! Such clumsy fools, such absolute nobodies! I'd take every last one of them and kick their asses! They earn so much dough and can't even run after a damn ball!”
                                 |
-                                "The old guy launched into a massive tirade, explaining how he personally would fix the whole national team, the government, and the entire country using violence."
+                                The old guy launched into a massive tirade, explaining how he personally would fix the whole national team, the government, and the entire country using violence.
                                 |
-                                "This ramble took way more than 10 minutes. Once it finally ended, I quickly said goodbye and headed towards the rendezvous point."
+                                This ramble took way more than 10 minutes. Once it finally ended, I quickly said goodbye and headed towards the rendezvous point.
                                 |
-                                "At the spot, I found Wołoch and his two companions — without the guy with the camera — lying completely wasted with a heap of empty bottles around them."
+                                At the spot, I found Wołoch and his two companions — without the guy with the camera — lying completely wasted with a heap of empty bottles around them.
                                 |
-                                "Only their loud snoring broke the silence. I decided to take the empty bottles and the remaining unopened cheap wine to sell them at the local store."
+                                Only their loud snoring broke the silence. I decided to take the empty bottles and the remaining unopened cheap wine to sell them at the local store.
                                 |
                                 #Money += 40#
+                                |~
                         }
-                    ||
                     {"“Yeah... no way.” (Run away)"}
-                        "I turned on my heel and left those idiots before the police showed up."
+                        I turned on my heel and left those idiots before the police showed up.
+                        |~
                 }
-            ||
             {"“Forget it, I'm going home.” (Run away)"}
-                "I walked away, leaving the bald guy talking to his camera."
+                I walked away, leaving the bald guy talking to his camera.
+                |~
         }
 }
-|~
-
-/* --- BLOKI SYTUACYJNE (POWIAZANE Z WYBORAMI) --- */
-
-#BEATING_SCENE#
-I try to throw a lesson-teaching haymaker at him, but the state I'm in doesn't really help.
-|
-The punch hit him in the face, but didn't do much damage. It only served to unleash the beast.
-|
-The man turned bright red, clocked me right in the eye, pulled my sweater over my head, and gave me a severe beating.
-|
-“Eaaaaaagleeeeeeeeeeeeeeeeeeeeee!” he yelled into the night until he was too far away to be heard.
-|
-#Health -= 1#
-I dragged my sore body home.
-|~
-
-#RUN_SCENE#
-I started running as fast as my alcohol-soaked legs could carry me.
-|
-The man started running right after me, laughing out loud, choking horribly, and chanting: “Eagle, EEEagle, Eagllle, Eagl, Oooooooooooooooooooooooooooooooooooooooooooooo!”
-|
-While running, I quickly got tired. I knew I had to hide somewhere, otherwise he'd harass me again.
-|
-{
-    {"Hide on the street corner."}
-        "I hid on the street corner, but he found me anyway."
-        |
-        "His facial expression changed, he turned off the camera, and pure hatred shone in his eyes."
-        |
-        #BEATING_SCENE#
-    ||
-    {"Go to the local shop."}
-        "I ran to the local shop, where a good number of my friends were already enjoying a few beers."
-        |
-        "When I approached them, they looked at me like I was crazy, since I was sweating profusely through my heavy sweater."
-        |
-        "From afar, I noticed the man with the camera. Seeing the crowd of lads, he slowly backed away into the shadows."
-        |
-        "After hanging around the shop for a few moments, I went home in peace."
-}
-|~

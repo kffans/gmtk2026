@@ -20,3 +20,12 @@
 ## Narrative & Tone
 - Story driven by a narrator (first-person internal monologue).
 - Style inspired by Bareja movies.
+
+## Mechanics
+
+### Variables
+Are stored in Dial text.
+We have three types of variables:
+- events
+- stats
+- items
