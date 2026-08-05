@@ -17,43 +17,39 @@ public class AudioManager : MonoBehaviour
 
     [Header("Music")]
     public AudioClip menu;
-    public AudioClip intro;    
+    public AudioClip intro;
+
+    private float lastSFXPreviewTime;
+    private const float SFX_PREVIEW_COOLDOWN = 0.15f;    
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            // DontDestroyOnLoad(gameObject); // Uncomment this line if you want the AudioManager to persist across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
+            return; 
         }
+
+        LoadVolumeSettings();
     }
 
+    
     public void PlaySFX(string soundEffectName)
     {
         AudioClip clipToPlay = null;
-        
 
         switch (soundEffectName)
         {
-            case "dialogueClick":
-                clipToPlay = dialogueClick;
-                break;
-            case "statChange":
-                clipToPlay = statChange;
-                break;
-            case "moneyChange":
-                clipToPlay = moneyChange;
-                break;
-            case "interlude":
-                clipToPlay = interlude;
-                break;
-            case "buttonClick":
-                clipToPlay = buttonClick;
-                break;
+            case "dialogueClick": clipToPlay = dialogueClick; break;
+            case "statChange": clipToPlay = statChange; break;
+            case "moneyChange": clipToPlay = moneyChange; break;
+            case "interlude": clipToPlay = interlude; break;
+            case "buttonClick": clipToPlay = buttonClick; break;
             default:
                 Debug.LogWarning("Nie znaleziono efektu dźwiękowego o nazwie: " + soundEffectName);
                 return; 
@@ -63,8 +59,6 @@ public class AudioManager : MonoBehaviour
         {
             sfxSource.PlayOneShot(clipToPlay);
         }
-
-        
     }
 
     public void PlayMusic(string musicName)
@@ -73,12 +67,8 @@ public class AudioManager : MonoBehaviour
 
         switch (musicName)
         {
-            case "menu":
-                clipToPlay = menu; 
-                break;
-            case "intro":
-                clipToPlay = intro; 
-                break;
+            case "menu": clipToPlay = menu; break;
+            case "intro": clipToPlay = intro; break;
             default:
                 Debug.LogWarning("There is no such: " + musicName);
                 return; 
@@ -86,14 +76,35 @@ public class AudioManager : MonoBehaviour
 
         if (musicSource != null && clipToPlay != null)
         {
-            if (musicSource.clip == clipToPlay && musicSource.isPlaying) 
-            {
-                return;
-            }
+            if (musicSource.clip == clipToPlay && musicSource.isPlaying) return;
 
             musicSource.clip = clipToPlay;
             musicSource.loop = true;
             musicSource.Play(); 
         }
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        if (musicSource != null) musicSource.volume = volume;
+        PlayerPrefs.SetFloat("MusicVolume", volume); 
+    }
+
+    public void SetSFXVolume(float volume, bool playPreview = false)
+    {
+        if (sfxSource != null) sfxSource.volume = volume;
+        PlayerPrefs.SetFloat("SFXVolume", volume);
+
+        if (playPreview && Time.time - lastSFXPreviewTime >= SFX_PREVIEW_COOLDOWN)
+        {
+            PlaySFX("buttonClick");
+            lastSFXPreviewTime = Time.time;
+        }
+    }
+
+    private void LoadVolumeSettings()
+    {
+        if (musicSource != null) musicSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        if (sfxSource != null) sfxSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
     }
 }
