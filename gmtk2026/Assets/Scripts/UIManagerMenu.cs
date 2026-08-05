@@ -47,6 +47,26 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToggleSettings();
+        }
+    }
+
+    private void ToggleSettings()
+    {
+        if (settingsPanel != null && settingsPanel.activeSelf)
+        {
+            CloseOptions();
+        }
+        else
+        {
+            OpenOptions();
+        }
+    }
+
     private void UpdateSFXVolume(float value)
     {
         if (AudioManager.Instance != null)

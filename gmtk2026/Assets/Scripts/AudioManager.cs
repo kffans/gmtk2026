@@ -32,12 +32,11 @@ public class AudioManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            return; 
+            return;
         }
 
         LoadVolumeSettings();
     }
-
     
     public void PlaySFX(string soundEffectName)
     {
