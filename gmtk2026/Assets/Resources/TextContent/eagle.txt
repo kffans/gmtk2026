@@ -9,6 +9,7 @@ He was holding a camera in his right hand and started blabbering straight into m
 I had absolutely no idea what kind of brain rot he was suffering from, so I kept walking. But the lunatic tagged right along behind me, shouting louder and louder.
 |
 {
+    [[1]]
     {"Keep walking."}
         The man kept following me, and his shouting was getting increasingly pushy.
         |
@@ -47,7 +48,7 @@ I had absolutely no idea what kind of brain rot he was suffering from, so I kept
                 From afar, I noticed the man with the camera. Seeing the crowd of lads, he slowly backed away into the shadows.
                 |
                 After hanging around the shop for a few moments, I went home in peace.
-                |~
+                [99]
         }
     {"“What?!”"}
         [2]
@@ -68,7 +69,7 @@ Hearing this, the man smiled, exposing a terrifying set of teeth, and shoved the
         Repeating it over and over, the chance of shaking him off was slim. A moment later, he approached me again.
         |
         “So, Eagle? What about that cheap wine warehouse?”
-        |~
+        [1]
     {"“I'm in!”"}
         “Awesome, come on, let me introduce you to the crew.”
         |
@@ -107,7 +108,7 @@ Hearing this, the man smiled, exposing a terrifying set of teeth, and shoved the
                         “You really work there? Haha!” While laughing, he looked to the side and caught a glimpse of Wołoch clumsily loading cheap wine into his trailer.
                         |
                         “Hey, what's going on over there?!” He ran out of his guard shack toward the thieves. Sensing trouble, I quickly ran home.
-                        |~
+                        [99]
                     {"Start complaining about the national team."}
                         “I see you're watching our slackers?”
                         |
@@ -124,15 +125,15 @@ Hearing this, the man smiled, exposing a terrifying set of teeth, and shoved the
                         Only their loud snoring broke the silence. I decided to take the empty bottles and the remaining unopened cheap wine to sell them at the local store.
                         |
                         #Money += 40#
-                        |~
+                        [99]
                 }
             {"“Yeah... no way.” (Run away)"}
                 I turned on my heel and left those idiots before the police showed up.
-                |~
+                [99]
         }
     {"“Forget it, I'm going home.” (Run away)"}
         I walked away, leaving the bald guy talking to his camera.
-        |~
+        [99]
 }
 [[3]]
 I try to throw a lesson-teaching haymaker at him, but the state I'm in doesn't really help.
@@ -145,4 +146,5 @@ The man turned bright red, clocked me right in the eye, pulled my sweater over m
 |
 #Health -= 1#
 I dragged my sore body home.
+[[99]]
 |~

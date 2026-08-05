@@ -20,11 +20,11 @@
 - Write evening activity scenarios.
 - Write the true outro.
 - Change intro, mirek, eagle, death, credits to be more into your style
-- repair eagle story its broken
 - made story more compact
 
 # Tasks in doing
 - edit gameplay to store events that will affect us during game
+- repair eagle story its broken
 
 # Done
 - make death mechanic

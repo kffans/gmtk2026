@@ -1,12 +1,18 @@
 There is an evening now.
 |
 &MirekPassiveIncome == 1&
+    &RANDOM > 90&
+        #Money += 25#
+        Mirek gives extra cash.
+        |
+    ||
     &RANDOM > 50&
         #Money += 10#
         Mirek gives cash.
         |
     ||
 ||
+[[1]]
 What do you want to do?
 |
 {
@@ -16,6 +22,7 @@ What do you want to do?
     &MirekBusinessCard == 1&
         - Mirek's Business Card
     ||
+    [1]
 {"Go to sleep"}
     Time to rest.
 }

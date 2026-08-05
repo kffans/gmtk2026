@@ -23,6 +23,27 @@
 
 ## Mechanics
 
+### Dialogues
+Lp.    Znaki    Przykład użycia    Nazwa
+1    |    |    Punkt przerwy tekstu
+2    |~    |~    Punkt kończący tekst interpretowany
+3    [id_skoku]    [5]    Punkt skoku
+4    [[id_skoku]]    [[20]]    Punkt zaczepienia
+5    #instrukcja#    #Money += 25#    Instrukcja zmiennej
+6    @instrukcja@    @DISPLAY Money@    Instrukcja specjalna
+7    &warunek&    &Money > 20&    Początek zakresu warunkowego
+8    ||    ||    Punkt kończący zakres warunkowy
+9    $[id_skoku] warunek$    $[10] Money >= 40$    Warunek ciągły
+10    {
+{tekst_opcji_1} {tekst_opcji_2}
+}    {
+{Powiedz: "Witaj."}
+{Poczekaj.}
+{Odejdź.}
+}    Opcja / Zakres opcji
+11    // tekst //    // Ukryty tekst //    Komentarz jednoliniowy
+12    /* tekst */    /* Ukryty tekst */    Komentarz wieloliniowy
+
 ### Variables
 Are stored in Dial text.
 We have three types of variables:
