@@ -3002,7 +3002,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1333102912}
   - component: {fileID: 1333102913}
-  - component: {fileID: 1333102914}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -3048,26 +3047,6 @@ MonoBehaviour:
   buttonClick: {fileID: 8300000, guid: 37ffbd0ad33cf324ab23c0664730f96a, type: 3}
   menu: {fileID: 8300000, guid: a8dc0a5fe065f8445bc02a94441c1aae, type: 3}
   intro: {fileID: 8300000, guid: ff33553d19cb94745810db49e6e822d5, type: 3}
---- !u!114 &1333102914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1333102911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4ab9aa00e4d63840b2ffc53750aefc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiPanel: {fileID: 1226043139}
-  settingsPanel: {fileID: 974550534}
-  musicVolumeSlider: {fileID: 1783361849}
-  sfxVolumeSlider: {fileID: 1105451730}
-  startGameButton: {fileID: 1249272214}
-  optionsButton: {fileID: 386515582}
-  quitGameButton: {fileID: 1215228882}
-  quitOptionsButton: {fileID: 744736867}
 --- !u!1 &1783361847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3306,6 +3285,7 @@ GameObject:
   - component: {fileID: 1857009647}
   - component: {fileID: 1857009646}
   - component: {fileID: 1857009645}
+  - component: {fileID: 1857009648}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -3374,6 +3354,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1857009648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857009644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ab9aa00e4d63840b2ffc53750aefc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPanel: {fileID: 1226043139}
+  settingsPanel: {fileID: 974550534}
+  musicVolumeSlider: {fileID: 1783361849}
+  sfxVolumeSlider: {fileID: 1105451730}
+  startGameButton: {fileID: 1249272214}
+  optionsButton: {fileID: 386515582}
+  quitGameButton: {fileID: 1215228882}
+  quitOptionsButton: {fileID: 744736867}
 --- !u!1 &2082870485
 GameObject:
   m_ObjectHideFlags: 0
